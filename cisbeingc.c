@@ -40,6 +40,34 @@ Node* createNode(int value){
 }
 
 
+Node* NonRecurusiveInsertNode (Node* root ,int value){
+  if(root == NULL) return createNode(value);
+  
+  Node* tempNode = root;
+  Node* parent;
+  while (tempNode != NULL) {
+    parent = tempNode;
+    if(value <tempNode->data)  {
+
+      tempNode = root->left;
+
+    }else {
+
+      tempNode = root->right;
+    }
+  }
+    
+    if (value<parent->data) {
+ parent->left =createNode(value);
+    } else {
+      parent->right = createNode(value);
+    }
+    
+  return root;
+
+}
+
+
 void printTree(Node* root){
   if(root == NULL) return ;
   printTree(root->left);
@@ -95,8 +123,8 @@ int main () {
 
    Node* Root = NULL;
    
-  Root = InsertNode(Root , 14); 
-  Root = InsertNode(Root , 13);
+ /* Root = InsertNode(Root , 14); 
+   Root = InsertNode(Root , 13);
   Root = InsertNode(Root,16);
   Root = InsertNode(Root ,0);
   Root = InsertNode(Root , 17);
@@ -104,15 +132,23 @@ int main () {
   Root = InsertNode(Root , 12);
   Root = InsertNode(Root , 13);
   Root = InsertNode(Root , 1);
-  Root = InsertNode(Root , -1);
+
+ Root = InsertNode(Root , -1);
   Root = InsertNode(Root , 13);
   Root = InsertNode(Root ,15);
   Root = InsertNode(Root ,12);  
   Root = InsertNode(Root , 12);
   Root = InsertNode(Root , 12);
-        
+  */     
 
-printf("number of nodes is : %d\n",numberOfleaves(Root));
+Root = NonRecurusiveInsertNode(Root , 14);
+Root = NonRecurusiveInsertNode(Root , 13);
+Root = NonRecurusiveInsertNode(Root, 16);
+
+printf("number of leaves is : %d\n",numberOfleaves(Root));
+
+printf("number of  is nodes  : %d\n",numberOfNodes(Root));
+
 printf("sum of content is %d\n" ,sumOfContent(Root));
 printf("the depth of this binary tree is  %d\n", depthOfTree(Root));
  printTree2(Root);
