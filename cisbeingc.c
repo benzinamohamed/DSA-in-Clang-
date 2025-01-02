@@ -115,7 +115,7 @@ int main () {
 printf("number of nodes is : %d\n",numberOfleaves(Root));
 printf("sum of content is %d\n" ,sumOfContent(Root));
 printf("the depth of this binary tree is  %d\n", depthOfTree(Root));
- // printTree2(Root);
+ printTree2(Root);
 
 
 
